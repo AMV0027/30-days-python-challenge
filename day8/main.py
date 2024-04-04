@@ -26,7 +26,7 @@ def score_sentences(sentences, word_freq):
         sentence_scores[sentence] = score
     return sentence_scores
 
-def generate_summary(sentences, sentence_scores, num_sentences=3):
+def generate_summary(sentences, sentence_scores, num_sentences=2):
     sorted_sentences = sorted(sentence_scores, key=sentence_scores.get, reverse=True)
     summary = ' '.join(sorted_sentences[:num_sentences])
     return summary
