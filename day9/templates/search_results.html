@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-12 bg-gray-800 text-white flex flex-col justify-center items-center">
+    <h1  class="text-3xl font-bold">Search Results</h1>
+    {% if recipes %}
+        <ul>
+            {% for recipe in recipes %}
+                <li>
+                    <form action="{{ url_for('display_recipe', recipe_id=recipe['idMeal']) }}" method="GET" class="m-2 text-xl">
+                        <input type="submit" value="View Recipe" class="bg-blue-500 p-1 rounded-xl hover:bg-transparent border-2 border-blue-500">
+                        {{ recipe['strMeal'] }}
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recipes found.</p>
+    {% endif %}
+    <p class="mt-12 text-sm">
+        Made by Arunmozhi varman <a href="https://github.com/AMV0027" class="text-blue-500">@AMV0027</a>
+    </p>
+</body>
+</html>

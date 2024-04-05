@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe['strMeal'] }} Recipe Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body  class="p-12 bg-gray-800 text-white flex flex-col justify-center">
+    <h2 class="text-4xl font-bold mb-2 animate-pulse">{{ recipe['strMeal'] }}</h2>
+    <!-- <h2>{{ recipe['strYoutube'].replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/") }}</h2> -->
+    <br>
+    <p>Category: {{ recipe['strCategory'] }}</p>
+    <p>Area: {{ recipe['strArea'] }}</p>
+    <br>
+    <h3 class="text-2xl font-bold">Ingredients:</h3>
+    <ul>
+        {% for i in range(1, 20) %}
+            {% set ingredient = recipe['strIngredient' ~ i] %}
+            {% set measure = recipe['strMeasure' ~ i] %}
+            {% if ingredient %}
+                <li>{{ measure }} {{ ingredient }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <br><br>
+    <div class="flex flex-row justify-start max-h-[250px]">
+        <div class="mt-5">
+            <iframe  class="h-[200px] w-[300px] rounded-xl" src="{{ recipe['strYoutube'].replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/') }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="ml-6 ">
+            <img src="{{ recipe['strMealThumb'] }}" alt="{{ recipe['strMeal'] }}"
+            class="h-[200px] w-[300px] mt-6 mb-6 rounded-xl border-2 border-transparent hover:border-blue-500"
+            >
+        </div>
+    </div>
+    <h3 class="text-2xl font-bold">Instructions:</h3>
+    <p>{{ recipe['strInstructions'] }}</p>
+    
+    <br><br>
+    <p class="mt-12 text-sm">
+        Made by Arunmozhi varman <a href="https://github.com/AMV0027" class="text-blue-500">@AMV0027</a>
+    </p>
+</body>
+</html>
