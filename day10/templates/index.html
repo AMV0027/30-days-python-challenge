@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT NEO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-4 flex flex-col justify-center items-center text-xl bg-gray-900 text-white">
+    <h1 class="text-2xl mb-12 mt-12 font-bold text-blue-500 animate-bounce">GPT-NEO Text Generation</h1>
+    
+    <form method="POST">
+        <label for="input_text" class="mb-4 text-md font-bold">Enter text:</label><br>
+        <textarea id="input_text" class="text-blue-500 m-2 rounded-xl p-4" name="input_text" rows="4" cols="50"></textarea><br>
+        <button type="submit" class="p-2 text-lg bg-blue-500 rounded-xl m-2">Generate Text</button>
+    </form>
+
+    {% if generated_text %}
+    <h2 class=" font-bold text-blue-500">Generated Text</h2>
+    <p class="p-2 m-2 border-2 border-blue-500 rounded-xl w-[500px]">
+        {{ generated_text }}
+    </p>
+    {% elif generating_text %}
+    <div class="flex flex-row">   
+        <span class="animate-spin mr-3 text-md">⌛</span>
+        <h2 class="text-blue-500 animate-pluse text-md">Generating Text . . .</h2>
+    </div>
+    {% endif %}
+</body>
+</html>
