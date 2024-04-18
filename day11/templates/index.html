@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-white flex flex-col justify-start items-center p-12 c">
+    <div class="flex flex-row  animate-bounce">
+        <img
+        class="drop-shadow-[0_0_30px_rgba(225,0,0,1)] h-16 w-auto" 
+        src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" 
+        alt="youtube logo">
+        <span class="m-4 text-2xl font-extrabold">+</span>
+        <img
+        class="drop-shadow-[0_0_30px_rgba(225,0,0,1)] h-16 w-auto" 
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png" 
+        alt="youtube logo">
+    </div>
+    <h1 class="text-2xl font-bold mt-6 mb-12">
+        Python YouTube Downloader
+    </h1>
+    <form action="/download" method="post">
+        <label for="url"
+        class=" text-md m-2"
+        >Enter YouTube URL:</label><br>
+        <input
+        class="p-3 rounded-xl m-2 w-[400px] text-red-500"
+        type="text" id="url" name="url"><br>
+        <input
+        class="p-3 bg-red-500 hover:bg-white hover:text-red-500 pr-5 pl-5 rounded-xl m-2"
+        type="submit" value="Download">
+    </form>
+    <div id="loading" style="display: none;" class="flex flex-col items-center ">
+        <p class="animate-pulse">Downloading...</p>
+    </div>
+
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            document.getElementById('loading').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import requests
-from PIL import Image
 from io import BytesIO
 
 app = Flask(__name__)
