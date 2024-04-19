@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Video Summary</title>
+</head>
+<script src="https://cdn.tailwindcss.com"></script>
+<body class="p-12 bg-zinc-800 text-white flex flex-col justify-start items-center">
+
+    <div class="w-full m-4">
+        <div class=" mb-6 flex flex-row drop-shadow-[0_0_30px_rgba(225,0,0,1)]">
+            <img
+            class=" h-12 mr-4 w-auto animate-pulse" 
+            src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" 
+            alt="youtube logo">
+            <h1 
+            class="text-4xl font-extrabold text-red-500"
+            >YouTube Video Summary</h1>
+        </div>
+        
+
+        <form method="post" class="mt-4">
+            <label for="youtube_video"
+            class="text-md m-2"
+            >Enter YouTube Video URL:</label><br>
+            <div class="flex flex-row">
+                <input
+                class="p-2 text-red-500 rounded-md m-2"
+                type="text" id="youtube_video" name="youtube_video" required><br><br>
+                <input
+                class="p-2 mt-2 mb-2 bg-red-500 rounded-md pr-4 pl-4"
+                type="submit" value="Submit">
+            </div>
+            
+        </form>
+    </div> 
+
+    <div id="loading" style="display: none;" class="flex flex-col items-center ">
+        <p class="animate-pulse font-bold text-md">Processing</p>
+    </div>
+
+    {% if youtube_video %}
+    <h2 class="mt-5 text-md font-light w-full m-3">YouTube Video :</h2>
+    <div class="w-full">
+        <iframe width="560" height="315" src="{{ youtube_video }}" frameborder="0" allowfullscreen></iframe><br><br>
+    </div>
+    
+    {% endif %}
+    
+    {% if summarized_text %}
+    <h2 class="mt-5 text-md font-bold text-red-500 w-full m-3">Summarized Transcript</h2>
+    <span class="ml-5">
+    {% for text in summarized_text %}
+        <li class="mb-2">{{ text }}</li>
+    {% endfor %}
+
+    </span>
+    {% endif %}
+    
+    {% if transcript_text %}
+    <h2 class="mt-5 text-md font-bold text-red-500 w-full m-3">Full Transcript</h2>
+    <p class="text-justify ml-5">{{ transcript_text }}</p>
+    {% endif %}
+
+    <p class="opacity-50 text-sm mt-20">
+        made by Arunmozhi varman
+    </p>
+
+
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            document.getElementById('loading').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
