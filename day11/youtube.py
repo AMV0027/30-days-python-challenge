@@ -21,7 +21,7 @@ def index():
 @app.route('/download', methods=['POST'])
 def download():
     url = request.form['url']
-    save_path = "<YOUR OUTPUT FOLDERPATH>"
+    save_path = "C:/Users/amvk2/OneDrive/Documents/youtube_videos"
     os.makedirs(save_path, exist_ok=True)
     success, error_message = download_video(url, save_path)
     if success:
