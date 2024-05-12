@@ -12,7 +12,7 @@ model = ParlerTTSForConditionalGeneration.from_pretrained("parler-tts/parler_tts
 tokenizer = AutoTokenizer.from_pretrained("parler-tts/parler_tts_mini_v0.1")
 
 prompt = input("Enter a voice personality : ")
-description = input("Enter description : ")
+description = input("voice of a middle aged man with deep and manly gentleman voice with american accent")
 
 input_ids = tokenizer(description, return_tensors="pt").input_ids.to(device)
 prompt_input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
